@@ -42,7 +42,16 @@
 #
 # Copyright 2015 Your name here, unless otherwise noted.
 #
-class fluentd {
+class fluentd (
+  $ensure      = $::fluentd::params::ensure,
+  $manage_repo = $::fluentd::params::manage_repo,
+) inherits fluentd::params {
 
+  validate_string($ensure)
+  validate_bool($manage_repo)
+
+  if $manage_repo {
+    class { '::fluentd::repo': }
+  }
 
 }
