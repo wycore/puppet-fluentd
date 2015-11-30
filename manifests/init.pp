@@ -48,19 +48,31 @@ class fluentd (
   $package_ensure          = $::fluentd::params::package_ensure,
   $package_name            = $::fluentd::params::package_name,
   $package_install_options = $::fluentd::params::package_install_options,
+  $service_manage          = $::fluentd::params::service_manage,
+  $service_name            = $::fluentd::params::service_name,
+  $service_ensure          = $::fluentd::params::service_ensure,
+  $service_enable          = $::fluentd::params::service_enable,
 ) inherits fluentd::params {
 
+  # parameter validation
   validate_string($ensure)
   validate_bool($manage_repo)
   validate_string($package_ensure)
   validate_string($package_name)
   validate_array($package_install_options)
+  validate_bool($service_manage)
+  validate_string($service_name)
+  validate_bool($service_enable)
+  if ! ($service_ensure in [ 'running', 'stopped' ]) {
+    fail('service_ensure parameter must be running or stopped')
+  }
 
   if $manage_repo {
     class { '::fluentd::repo': }
   }
 
   class { '::fluentd::install': } ->
-  class { '::fluentd::config':  }
+  class { '::fluentd::config':  } ->
+  class { '::fluentd::service': }
 
 }
