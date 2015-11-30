@@ -5,42 +5,42 @@
 #
 # Parameters
 # ----------
-#
-# Document parameters here.
-#
-# * `sample parameter`
-# Explanation of what this parameter affects and what it defaults to.
-# e.g. "Specify one or more upstream ntp servers as an array."
-#
-# Variables
-# ----------
-#
-# Here you should define a list of variables that this module would require.
-#
-# * `sample variable`
-#  Explanation of how this variable affects the function of this class and if
-#  it has a default. e.g. "The parameter enc_ntp_servers must be set by the
-#  External Node Classifier as a comma separated list of hostnames." (Note,
-#  global variables should be avoided in favor of class parameters as
-#  of Puppet 2.6.)
+# [*ensure*]
+#   Default: 'present'
+# [*manage_repo*]
+#   Include repository to install recent fluentd (td-agent) from
+#   Default: 'true'
+# [*package_ensure*]
+#   Package ensure
+#   Default: 'installed'
+# [*package_name*]
+#   Package name
+#   Default: 'td-agent'
+# [*package_install_options*]
+#   Package install options
+#   Default: '[]'
+# [*service_manage*]
+#   Defines if the service should be managed by puppet
+#   Default: 'true'
+# [*service_name*]
+#   Name of the service
+#   Default: 'td-agent'
+# [*service_ensure*]
+#   Service ensure
+#   Default: 'running'
+# [*service_enabled*]
+#   Defines if the service should be enabled, defaults to 'true'
 #
 # Examples
 # --------
 #
 # @example
-#    class { 'fluentd':
-#      servers => [ 'pool.ntp.org', 'ntp.local.company.com' ],
-#    }
-#
-# Authors
-# -------
-#
-# Author Name <author@domain.com>
+#    include '::fluentd'
 #
 # Copyright
 # ---------
 #
-# Copyright 2015 Your name here, unless otherwise noted.
+# Copyright 2015 wywy GmbH, unless otherwise noted.
 #
 class fluentd (
   $ensure                  = $::fluentd::params::ensure,
