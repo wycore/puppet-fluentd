@@ -60,6 +60,7 @@ class fluentd (
     class { '::fluentd::repo': }
   }
 
-  class { '::fluentd::install': }
+  class { '::fluentd::install': } ->
+  class { '::fluentd::config':  }
 
 }
