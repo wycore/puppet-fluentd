@@ -43,15 +43,23 @@
 # Copyright 2015 Your name here, unless otherwise noted.
 #
 class fluentd (
-  $ensure      = $::fluentd::params::ensure,
-  $manage_repo = $::fluentd::params::manage_repo,
+  $ensure                  = $::fluentd::params::ensure,
+  $manage_repo             = $::fluentd::params::manage_repo,
+  $package_ensure          = $::fluentd::params::package_ensure,
+  $package_name            = $::fluentd::params::package_name,
+  $package_install_options = $::fluentd::params::package_install_options,
 ) inherits fluentd::params {
 
   validate_string($ensure)
   validate_bool($manage_repo)
+  validate_string($package_ensure)
+  validate_string($package_name)
+  validate_array($package_install_options)
 
   if $manage_repo {
     class { '::fluentd::repo': }
   }
+
+  class { '::fluentd::install': }
 
 }
