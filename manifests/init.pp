@@ -67,10 +67,7 @@ class fluentd (
     fail('service_ensure parameter must be running or stopped')
   }
 
-  if $manage_repo {
-    class { '::fluentd::repo': }
-  }
-
+  class { '::fluentd::repo':    } ->
   class { '::fluentd::install': } ->
   class { '::fluentd::config':  } ->
   class { '::fluentd::service': }
