@@ -1,11 +1,14 @@
 # Configure apt::source
 #
 class fluentd::repo::apt (
-  $ensure      = 'present',
-  $location    = downcase("http://packages.treasuredata.com/2/${::operatingsystem}/${::lsbdistcodename}"),
-  $release     = $::lsbdistcodename,
-  $repos       = 'contrib',
-  $key_source  = 'https://packages.treasuredata.com/GPG-KEY-td-agent',
+  $ensure   = 'present',
+  $location = downcase("http://packages.treasuredata.com/2/${::operatingsystem}/${::lsbdistcodename}"),
+  $release  = $::lsbdistcodename,
+  $repos    = 'contrib',
+  $key      = {
+    'id'     => '1093DB45A12E206F',
+    'source' => 'https://packages.treasuredata.com/GPG-KEY-td-agent'
+  },
 ) {
 
   include '::apt'
@@ -15,6 +18,6 @@ class fluentd::repo::apt (
     location   => $location,
     release    => $release,
     repos      => $repos,
-    key_source => $key_source,
+    key        => $key,
   }
 }
