@@ -4,66 +4,121 @@
 
 1. [Description](#description)
 1. [Setup - The basics of getting started with fluentd](#setup)
-    * [Setup requirements](#setup-requirements)
-    * [Beginning with fluentd](#beginning-with-fluentd)
-1. [Usage - Configuration options and additional functionality](#usage)
-1. [Reference - An under-the-hood peek at what the module is doing and how](#reference)
+1. [Usage](#usage)
+  * [Configuration](#configuration)
+    * [Source](#source)
+    * [Filter](#filter)
+    * [Match](#match)
+  * [Requirements](#requirements)
 1. [Limitations - OS compatibility, etc.](#limitations)
 1. [Development - Guide for contributing to the module](#development)
 
 ## Description
 
-Start with a one- or two-sentence summary of what the module does and/or what
-problem it solves. This is your 30-second elevator pitch for your module.
-Consider including OS/Puppet version it works with.
+The fluentd module sets up fluentd (td-agent) and manages configuration files.
 
-You can give more descriptive information in a second paragraph. This paragraph
-should answer the questions: "What does this module *do*?" and "Why would I use
-it?" If your module has a range of functionality (installation, configuration,
-management, etc.), this is the time to mention it.
+**This module only supports fluentd from version 2**.
 
 ## Setup
 
-### Setup Requirements **OPTIONAL**
+This will install the latest version of fluentd
 
-If your module requires anything extra before setting up (pluginsync enabled,
-etc.), mention it here.
-
-If your most recent release breaks compatibility or requires particular steps
-for upgrading, you might want to include an additional "Upgrading" section
-here.
-
-### Beginning with fluentd
-
-The very basic steps needed for a user to get the module up and running. This
-can include setup steps, if necessary, or it can be an example of the most
-basic use of the module.
+```puppet
+include '::fluentd'
+```
 
 ## Usage
 
-This section is where you describe how to customize, configure, and do the
-fancy stuff with your module here. It's especially helpful if you include usage
-examples and code samples for doing things with your module.
+**By default this module doesn't configure any sources, matches or filters.** The section below describes how to configure these.
 
-## Reference
-
-Here, include a complete list of your module's classes, types, providers,
-facts, along with the parameters for each. Users refer to this section (thus
-the name "Reference") to find specific details; most users don't read it per
-se.
+### Configuration
+#### Source
+```puppet
+::fluentd::source { 'test':
+  priority => 10,
+  config   => {
+    'type'           => 'tail'
+    'format'         => 'json'
+    'path'           => '/var/log/test-application/*.json'
+    'tag'            => 'application.test'
+  }
+}
+```
+**results in:**
+```
+/etc/td-agent/conf.d/10-source-test.conf
+<source>
+    type tail
+    format json
+    path /var/log/test-application/*.json
+    tag application.test
+</source>
+```
+#### Filter
+```puppet
+::fluentd::filter { 'test':
+  priority => 20,
+  pattern  => '*.test'
+  config   => {
+    'type'   => 'record_transformer'
+    'record' => {
+      'hostname' => '${hostname}'
+    }
+  }
+}
+```
+**results in:**
+```
+/etc/td-agent/conf.d/20-filter-test.conf
+<filter *.test>
+        type record_transformer
+        <record>
+            hostname ${hostname}
+        </record>
+</filter>
+```
+#### Match
+```puppet
+::fluentd::match { 'test':
+  priority => 30,
+  pattern  => '*.test'
+  config   => {
+    'flush_interval' => '30s'
+    'type'           => 'secure_forward'
+    'secure'         => 'yes'
+    'shared_key'     => 'my_shared_key'
+    'self_hostname'  => 'instance.test.com'
+    'ca_cert_path'   => '/path/to/ca.cert'
+    'servers'        => {
+      'host' => 'test.server.com'
+    }
+  }
+}
+```
+**results in:**
+```
+/etc/td-agent/conf.d/30-match-test.conf
+<match *.test>
+        flush_interval 30s
+        type secure_forward
+        secure yes
+        shared_key my_shared_key
+        self_hostname instance.test.com
+        ca_cert_path /path/to/ca.cert
+        <servers>
+            host test.server.com
+        </servers>
+</match>
+```
 
 ## Limitations
+This module has been built on and tested against Puppet 3.7.5 and higher.
 
-This is where you list OS compatibility, version compatibility, etc. If there
-are Known Issues, you might want to include them under their own heading here.
+The module has been tested on:
+
+* Ubuntu 12.04
+
+Testing on other platforms has been light and cannot be guaranteed.
 
 ## Development
 
-Since your module is awesome, other users will want to play with it. Let them
-know what the ground rules for contributing are.
-
-## Release Notes/Contributors/Etc. **Optional**
-
-If you aren't using changelog, put your release notes here (though you should
-consider using changelog). You can also add any additional sections you feel
-are necessary or important to include here. Please use the `## ` header.
