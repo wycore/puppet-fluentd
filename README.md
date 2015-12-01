@@ -32,15 +32,16 @@ include '::fluentd'
 **By default this module doesn't configure any sources, matches or filters.** The section below describes how to configure these.
 
 ### Configuration
+
 #### Source
 ```puppet
 ::fluentd::source { 'test':
   priority => 10,
   config   => {
-    'type'           => 'tail'
-    'format'         => 'json'
-    'path'           => '/var/log/test-application/*.json'
-    'tag'            => 'application.test'
+    'type'   => 'tail'
+    'format' => 'json'
+    'path'   => '/var/log/test-application/*.json'
+    'tag'    => 'application.test'
   }
 }
 ```
@@ -110,6 +111,11 @@ include '::fluentd'
         </servers>
 </match>
 ```
+
+### Requirements
+
+Modules:
+* puppetlabs/apt >= 1.8.0 < 3.0.0
 
 ## Limitations
 This module has been built on and tested against Puppet 3.7.5 and higher.
