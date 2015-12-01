@@ -1,0 +1,13 @@
+<filter <%= @pattern %>>
+<% @config.each do |key, val| -%>
+    <%- if val.is_a?( Hash ) -%>
+        <<%= key -%>>
+        <%- val.each do |key, val| -%>
+            <%= key -%> <%= val %>
+        <%- end -%>
+        </<%= key %>>
+    <%- else -%>
+        <%= key -%> <%= val %>
+    <%- end -%>
+<% end -%>
+</filter>
