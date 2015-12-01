@@ -4,7 +4,7 @@
 define fluentd::config::file (
   $ensure   = present,
   $priority = 50,
-  $content,
+  $content  = undef,
 ) {
 
   $base_name   = "${title}.conf"
