@@ -5,6 +5,14 @@ define fluentd::source (
   $priority = 10,
   $config   = {},
 ) {
+
+  # parameter validation
+  if ! ($ensure in [ 'present', 'absent' ]) {
+    fail('ensure parameter must be present or absent')
+  }
+  validate_integer($priority)
+  validate_hash($config)
+
   fluentd::config::file { "source-${title}":
     ensure   => $ensure,
     priority => $priority,
