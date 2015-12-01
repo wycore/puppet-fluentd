@@ -7,6 +7,10 @@ define fluentd::config::file (
   $content  = undef,
 ) {
 
+  if $caller_module_name != $module_name {
+    fail("Use of private fluentd::config::file by ${caller_module_name}")
+  }
+
   $base_name   = "${title}.conf"
   $config_name = "${priority}-${base_name}"
   $base_path   = "/etc/td-agent/conf.d"
