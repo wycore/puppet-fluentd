@@ -154,5 +154,5 @@ To run the tests install the ruby dependencies with `bundler` and execute
 
 ```
 bundle install --path vendor/bundle
-bundle exec rake
+bundle exec rake spec
 ```
