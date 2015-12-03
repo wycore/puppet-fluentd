@@ -67,9 +67,16 @@ class fluentd (
     fail('service_ensure parameter must be running or stopped')
   }
 
-  class { '::fluentd::repo':    } ->
-  class { '::fluentd::install': } ->
-  class { '::fluentd::config':  } ->
-  class { '::fluentd::service': }
+  # class calls
+  include '::fluentd::repo'
+  include '::fluentd::install'
+  include '::fluentd::config'
+  include '::fluentd::service'
+
+  # dependencies
+  Class['::Fluentd::Repo']    ->
+  Class['::Fluentd::Install'] ->
+  Class['::Fluentd::Config']  ->
+  Class['::Fluentd::Service']
 
 }
