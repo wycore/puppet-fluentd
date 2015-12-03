@@ -9,6 +9,7 @@
     * [Source](#source)
     * [Filter](#filter)
     * [Match](#match)
+  * [Plugin Installation](#plugin-installation)
   * [Requirements](#requirements)
 1. [Limitations - OS compatibility, etc.](#limitations)
 1. [Development - Guide for contributing to the module](#development)
@@ -110,6 +111,24 @@ include '::fluentd'
             host test.server.com
         </servers>
 </match>
+```
+
+### Plugin Installation
+
+This module gives you the possibility to install plugins as gem or files.
+
+**gem installation**
+```puppet
+::fluentd::plugin { 'fluent-plugin-elasticsearch':
+  type => 'gem'
+}
+```
+**file installation**
+```puppet
+::fluentd::plugin { 'fluent-plugin-elasticsearch':
+  type   => 'file',
+  source => 'puppet:///path/to/plugin'
+}
 ```
 
 ### Requirements
