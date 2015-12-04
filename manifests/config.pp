@@ -2,7 +2,7 @@
 #
 class fluentd::config inherits fluentd {
 
-  file { '/etc/td-agent/td-agent.conf' :
+  file { $config_file:
     ensure  => file,
     owner   => 'root',
     group   => 'root',
@@ -10,10 +10,10 @@ class fluentd::config inherits fluentd {
     notify  => Class['Fluentd::Service'],
   }
 
-  file {'/etc/td-agent/conf.d':
+  file { $conf_dir:
     ensure  => 'directory',
-    owner   => 'td-agent',
-    group   => 'td-agent',
+    owner   => $user_name,
+    group   => $user_group,
     mode    => '0750',
   }
 

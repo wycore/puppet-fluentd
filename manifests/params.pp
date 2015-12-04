@@ -8,6 +8,13 @@ class fluentd::params {
   $service_name   = 'td-agent'
   $service_ensure = 'running'
   $service_enable = true
+  # config params
+  $config_path = '/etc/td-agent'
+  $conf_dir    = "${config_path}/conf.d"
+  $config_file = "${config_path}/td-agent.conf"
+  # user params
+  $user_name  = 'td-agent'
+  $user_group = 'td-agent'
 
   case $::osfamily {
     'Debian': {

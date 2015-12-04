@@ -13,13 +13,12 @@ define fluentd::config::file (
 
   $base_name   = "${title}.conf"
   $config_name = "${priority}-${base_name}"
-  $base_path   = "/etc/td-agent/conf.d"
-  $config_path = "${base_path}/${config_name}"
+  $config_path = "${::fluentd::conf_dir}/${config_name}"
 
   # clean up to ensure priority changes take effect
   exec { "apply priority change for ${base_name}":
-    command => "rm ${base_path}/*-${base_name}",
-    onlyif => "ls ${base_path}/*-${base_name} | grep -v ${config_name}",
+    command => "rm ${::fluentd::conf_dir}/*-${base_name}",
+    onlyif => "ls ${::fluentd::conf_dir}/*-${base_name} | grep -v ${config_name}",
     before  => File[$config_path],
     notify  => Class['Fluentd::Service'],
   }

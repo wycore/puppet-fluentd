@@ -9,10 +9,10 @@ define fluentd::plugin::file (
     fail("Use of private fluentd::plugin::file by ${caller_module_name}")
   }
 
-  file { "/etc/td-agent/plugin/${name}":
+  file { "${::fluentd::config_path}/plugin/${name}":
     ensure => $ensure,
-    owner  => 'td-agent',
-    group  => 'td-agent',
+    owner  => $::fluentd::user_name,
+    group  => $::fluentd::user_group,
     mode   => '0640',
     source => $source,
     notify => Class['Fluentd::Service']

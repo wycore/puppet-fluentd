@@ -49,6 +49,11 @@ class fluentd (
   $service_name            = $::fluentd::params::service_name,
   $service_ensure          = $::fluentd::params::service_ensure,
   $service_enable          = $::fluentd::params::service_enable,
+  $config_path             = $::fluentd::params::config_path,
+  $conf_dir                = $::fluentd::params::conf_dir,
+  $config_file             = $::fluentd::params::config_file,
+  $user_name               = $::fluentd::params::user_name,
+  $user_group              = $::fluentd::params::user_group,
 ) inherits fluentd::params {
 
   # parameter validation
