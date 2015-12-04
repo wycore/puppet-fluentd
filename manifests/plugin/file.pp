@@ -15,6 +15,6 @@ define fluentd::plugin::file (
     group  => 'td-agent',
     mode   => '0640',
     source => $source,
-    notify => Class['Fluentd::Service'];
+    notify => Class['Fluentd::Service']
   }
 }
