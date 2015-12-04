@@ -11,6 +11,6 @@ define fluentd::plugin::gem (
   package { $name:
     ensure   => $ensure,
     provider => 'fluentd_gem',
-    notify   => Class['Fluentd::Service'];
+    notify   => Class['Fluentd::Service']
   }
 }
