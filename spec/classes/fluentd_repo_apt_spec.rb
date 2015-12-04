@@ -19,7 +19,7 @@ describe 'fluentd::repo::apt', :type => :class do
         'release'  => 'precise',
         'repos'    => 'contrib',
         'key'      => {
-          'id'     => '1093DB45A12E206F',
+          'id'     => 'C901622B5EC4AF820C38AB861093DB45A12E206F',
           'source' => 'https://packages.treasuredata.com/GPG-KEY-td-agent'
         }
       })
