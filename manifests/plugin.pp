@@ -48,6 +48,7 @@ define fluentd::plugin (
 
       fluentd::plugin::file { $name:
         ensure => $ensure,
+        source => $source,
         require => Class['Fluentd::Install']
       }
     }
