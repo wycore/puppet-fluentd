@@ -1,5 +1,4 @@
 class fluentd::params {
-  $ensure                  = 'present'
   # package params
   $package_ensure          = 'installed'
   $package_name            = 'td-agent'

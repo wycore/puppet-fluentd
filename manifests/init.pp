@@ -43,7 +43,6 @@
 # Copyright 2015 wywy GmbH, unless otherwise noted.
 #
 class fluentd (
-  $ensure                  = $::fluentd::params::ensure,
   $manage_repo             = $::fluentd::params::manage_repo,
   $package_ensure          = $::fluentd::params::package_ensure,
   $package_name            = $::fluentd::params::package_name,
@@ -55,7 +54,6 @@ class fluentd (
 ) inherits fluentd::params {
 
   # parameter validation
-  validate_string($ensure)
   validate_bool($manage_repo)
   validate_string($package_ensure)
   validate_string($package_name)
