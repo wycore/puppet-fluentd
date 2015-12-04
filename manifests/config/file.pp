@@ -21,7 +21,7 @@ define fluentd::config::file (
     command => "rm ${base_path}/*-${base_name}",
     onlyif => "ls ${base_path}/*-${base_name} | grep -v ${config_name}",
     before  => File[$config_path],
-    notify  => Class['fluentd::service'],
+    notify  => Class['Fluentd::Service'],
   }
 
   file { $config_path:
@@ -30,6 +30,6 @@ define fluentd::config::file (
     owner   => 'td-agent',
     group   => 'td-agent',
     mode    => '0644',
-    notify  => Class['fluentd::service'],
+    notify  => Class['Fluentd::Service'],
   }
 }

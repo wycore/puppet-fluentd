@@ -7,7 +7,7 @@ class fluentd::config inherits fluentd {
     owner   => 'root',
     group   => 'root',
     source  => "puppet:///modules/fluentd/td-agent.conf",
-    notify  => Class['fluentd::service'],
+    notify  => Class['Fluentd::Service'],
   }
 
   file {'/etc/td-agent/conf.d':
