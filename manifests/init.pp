@@ -5,8 +5,6 @@
 #
 # Parameters
 # ----------
-# [*ensure*]
-#   Default: 'present'
 # [*manage_repo*]
 #   Include repository to install recent fluentd (td-agent) from
 #   Default: 'true'
