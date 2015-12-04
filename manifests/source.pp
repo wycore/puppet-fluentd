@@ -1,4 +1,37 @@
-# Configure a fluentd source
+# Define: fluentd::source
+# ===========================
+#
+# Configures a 'source' config file.
+#
+# Parameters
+# ----------
+# [*ensure*]
+#   Default: 'present'
+# [*priority*]
+#   Defines the priority
+#   Default: '10'
+# [*config*]
+#   Configuration, which must be a hash
+#   Default: {}'
+#
+# Examples
+# --------
+#
+# @example
+#    ::fluentd::source { 'test':
+#      priority => 10,
+#      config   => {
+#        'type'   => 'tail'
+#        'format' => 'json'
+#        'path'   => '/var/log/test-application/*.json'
+#        'tag'    => 'application.test'
+#      }
+#    }
+#
+# Copyright
+# ---------
+#
+# Copyright 2015 wywy GmbH, unless otherwise noted.
 #
 define fluentd::source (
   $ensure   = present,

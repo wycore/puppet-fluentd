@@ -1,4 +1,29 @@
-# Install fluentd plugins
+# Define: fluentd::plugin
+# ===========================
+#
+# Installs a plugin for fluentd.
+#
+# Parameters
+# ----------
+# [*ensure*]
+#   Default: 'present'
+# [*type*]
+#   Which type of plugin, allowed values are gem and file
+#   Default: 'gem'
+# [*source*]
+#   source to file for the plugin only needed if you use type: file
+#   Default: 'undef'
+#
+# Examples
+# --------
+#
+# @example
+#    ::fluentd::plugin { 'fluent-plugin-elasticsearch': }
+#
+# Copyright
+# ---------
+#
+# Copyright 2015 wywy GmbH, unless otherwise noted.
 #
 define fluentd::plugin (
   $ensure = present,

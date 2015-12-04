@@ -1,7 +1,7 @@
 # Class: fluentd
 # ===========================
 #
-# Full description of class fluentd here.
+# Installs and configures Fluentd.
 #
 # Parameters
 # ----------
