@@ -11,7 +11,7 @@ describe 'fluentd::match' do
   }
   let(:pre_condition) { 'include fluentd' }
 
-  context 'basic source' do
+  context 'basic match' do
     let(:title) { 'test' }
     let(:params) do
       {

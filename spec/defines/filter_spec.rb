@@ -11,7 +11,7 @@ describe 'fluentd::filter' do
   }
   let(:pre_condition) { 'include fluentd' }
 
-  context 'basic source' do
+  context 'basic filter' do
     let(:title) { 'test' }
     let(:params) do
       {
