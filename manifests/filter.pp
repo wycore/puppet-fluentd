@@ -23,9 +23,9 @@
 # @example
 #    ::fluentd::filter { 'test':
 #      priority => 20,
-#      pattern  => '*.test'
+#      pattern  => '*.test',
 #      config   => {
-#        'type'   => 'record_transformer'
+#        'type'   => 'record_transformer',
 #        'record' => {
 #          'hostname' => '${hostname}'
 #        }

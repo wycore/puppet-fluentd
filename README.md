@@ -39,9 +39,9 @@ include '::fluentd'
 ::fluentd::source { 'test':
   priority => 10,
   config   => {
-    'type'   => 'tail'
-    'format' => 'json'
-    'path'   => '/var/log/test-application/*.json'
+    'type'   => 'tail',
+    'format' => 'json',
+    'path'   => '/var/log/test-application/*.json',
     'tag'    => 'application.test'
   }
 }
@@ -60,9 +60,9 @@ include '::fluentd'
 ```puppet
 ::fluentd::filter { 'test':
   priority => 20,
-  pattern  => '*.test'
+  pattern  => '*.test',
   config   => {
-    'type'   => 'record_transformer'
+    'type'   => 'record_transformer',
     'record' => {
       'hostname' => '${hostname}'
     }
@@ -83,14 +83,14 @@ include '::fluentd'
 ```puppet
 ::fluentd::match { 'test':
   priority => 30,
-  pattern  => '*.test'
+  pattern  => '*.test',
   config   => {
-    'flush_interval' => '30s'
-    'type'           => 'secure_forward'
-    'secure'         => 'yes'
-    'shared_key'     => 'my_shared_key'
-    'self_hostname'  => 'instance.test.com'
-    'ca_cert_path'   => '/path/to/ca.cert'
+    'flush_interval' => '30s',
+    'type'           => 'secure_forward',
+    'secure'         => 'yes',
+    'shared_key'     => 'my_shared_key',
+    'self_hostname'  => 'instance.test.com',
+    'ca_cert_path'   => '/path/to/ca.cert',
     'servers'        => {
       'host' => 'test.server.com'
     }
