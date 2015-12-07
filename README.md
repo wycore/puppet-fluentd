@@ -1,5 +1,7 @@
 # wywygmbh/fluentd Puppet Module
 
+[![Build Status](https://travis-ci.org/wywygmbh/puppet-fluentd.svg?branch=master)](https://travis-ci.org/wywygmbh/puppet-fluentd)
+
 #### Table of Contents
 
 1. [Description](#description)
