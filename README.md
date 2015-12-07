@@ -46,14 +46,14 @@ include '::fluentd'
   }
 }
 ```
-**results in:**
+**creates:**
 ```
 /etc/td-agent/conf.d/10-source-test.conf
 <source>
-    type tail
-    format json
-    path /var/log/test-application/*.json
-    tag application.test
+  type tail
+  format json
+  path /var/log/test-application/*.json
+  tag application.test
 </source>
 ```
 #### Filter
@@ -69,14 +69,14 @@ include '::fluentd'
   }
 }
 ```
-**results in:**
+**creates:**
 ```
 /etc/td-agent/conf.d/20-filter-test.conf
 <filter *.test>
-        type record_transformer
-        <record>
-            hostname ${hostname}
-        </record>
+  type record_transformer
+  <record>
+    hostname ${hostname}
+  </record>
 </filter>
 ```
 #### Match
@@ -97,19 +97,19 @@ include '::fluentd'
   }
 }
 ```
-**results in:**
+**creates:**
 ```
 /etc/td-agent/conf.d/30-match-test.conf
 <match *.test>
-        flush_interval 30s
-        type secure_forward
-        secure yes
-        shared_key my_shared_key
-        self_hostname instance.test.com
-        ca_cert_path /path/to/ca.cert
-        <servers>
-            host test.server.com
-        </servers>
+  flush_interval 30s
+  type secure_forward
+  secure yes
+  shared_key my_shared_key
+  self_hostname instance.test.com
+  ca_cert_path /path/to/ca.cert
+  <servers>
+    host test.server.com
+  </servers>
 </match>
 ```
 
