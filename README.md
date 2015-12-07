@@ -15,6 +15,7 @@
   * [Requirements](#requirements)
 1. [Limitations - OS compatibility, etc.](#limitations)
 1. [Development - Guide for contributing to the module](#development)
+1. [License](#license)
 
 ## Description
 
@@ -159,3 +160,21 @@ bundle install --path vendor/bundle
 bundle exec rake spec
 bundle exec rake lint
 ```
+
+## License
+
+Copyright 2015 wywy GmbH
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
+This Puppet module is being actively maintained by some fellow puppeteers at [wywy GmbH](http://wywy.com/).
