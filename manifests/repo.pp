@@ -1,7 +1,7 @@
 # Configure package repository
 #
 class fluentd::repo inherits fluentd {
-  if $manage_repo {
+  if $::fluentd::manage_repo {
     case $::osfamily {
       'Debian': {
         include ::fluentd::repo::apt

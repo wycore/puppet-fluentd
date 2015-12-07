@@ -39,7 +39,7 @@ define fluentd::plugin (
   case $type {
     'gem': {
       fluentd::plugin::gem { $name:
-        ensure => $ensure,
+        ensure  => $ensure,
         require => Class['Fluentd::Install']
       }
     }
@@ -47,8 +47,8 @@ define fluentd::plugin (
       validate_string($source)
 
       fluentd::plugin::file { $name:
-        ensure => $ensure,
-        source => $source,
+        ensure  => $ensure,
+        source  => $source,
         require => Class['Fluentd::Install']
       }
     }

@@ -14,10 +14,10 @@ class fluentd::repo::apt (
   include '::apt'
 
   apt::source { 'treasure-data':
-    ensure     => $ensure,
-    location   => $location,
-    release    => $release,
-    repos      => $repos,
-    key        => $key,
+    ensure   => $ensure,
+    location => $location,
+    release  => $release,
+    repos    => $repos,
+    key      => $key,
   }
 }

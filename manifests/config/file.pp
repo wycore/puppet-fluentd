@@ -18,7 +18,7 @@ define fluentd::config::file (
   # clean up to ensure priority changes take effect
   exec { "apply priority change for ${base_name}":
     command => "rm ${::fluentd::conf_dir}/*-${base_name}",
-    onlyif => "ls ${::fluentd::conf_dir}/*-${base_name} | grep -v ${config_name}",
+    onlyif  => "ls ${::fluentd::conf_dir}/*-${base_name} | grep -v ${config_name}",
     before  => File[$config_path],
     notify  => Class['Fluentd::Service'],
   }
