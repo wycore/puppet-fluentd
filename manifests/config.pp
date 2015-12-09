@@ -1,4 +1,4 @@
-# Configure package
+# Configure config files/directories
 #
 class fluentd::config inherits fluentd {
 
@@ -16,5 +16,4 @@ class fluentd::config inherits fluentd {
     group  => $::fluentd::user_group,
     mode   => '0750',
   }
-
 }

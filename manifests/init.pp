@@ -64,6 +64,7 @@ class fluentd (
   validate_bool($service_manage)
   validate_string($service_name)
   validate_bool($service_enable)
+
   if ! ($service_ensure in [ 'running', 'stopped' ]) {
     fail('service_ensure parameter must be running or stopped')
   }
@@ -79,5 +80,4 @@ class fluentd (
   Class['::Fluentd::Install'] ->
   Class['::Fluentd::Config']  ->
   Class['::Fluentd::Service']
-
 }

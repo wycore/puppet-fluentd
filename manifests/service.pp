@@ -1,4 +1,4 @@
-# Configure package
+# Configure service
 #
 class fluentd::service inherits fluentd {
 

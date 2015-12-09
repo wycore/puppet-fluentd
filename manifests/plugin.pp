@@ -40,7 +40,7 @@ define fluentd::plugin (
     'gem': {
       fluentd::plugin::gem { $name:
         ensure  => $ensure,
-        require => Class['Fluentd::Install']
+        require => Class['Fluentd::Install'],
       }
     }
     'file': {
@@ -49,7 +49,7 @@ define fluentd::plugin (
       fluentd::plugin::file { $name:
         ensure  => $ensure,
         source  => $source,
-        require => Class['Fluentd::Install']
+        require => Class['Fluentd::Install'],
       }
     }
     default: {
