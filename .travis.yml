@@ -1,8 +1,8 @@
----
 sudo: false
 language: ruby
 bundler_args: --without system_tests
-script: "bundle exec rake validate && bundle exec rake lint && bundle exec rake spec SPEC_OPTS='--format documentation'"
+script: bundle exec rake validate && bundle exec rake lint && bundle exec rake spec
+  SPEC_OPTS='--format documentation'
 matrix:
   fast_finish: true
   include:
@@ -13,4 +13,5 @@ matrix:
   - rvm: 2.1.6
     env: PUPPET_GEM_VERSION="~> 4.0" STRICT_VARIABLES="yes"
 notifications:
-  email: max.wilhelm@wywy.com
+  slack:
+    secure: WVBx/OJqLpX9WXyiejEdnOcAf+5ShWJ2gcyeBCX032iKzPphcdPKqH+jnlFaKjqQCZARbRqzlj/if3FZWAlhWtTrWrcY545dRHcsaGvJ/nMtdHlBUuwUNHipSn+RTXtorsYz0efhJMPye2LMl0HgAp3rEs70XUt8rZOwdedLGVgfWRwM+KixhSf8P08v9QjNRNdhWII37KFRdqv/NHryNlVKsTLH6fQOyIvok3vrTvMR8rWMRETXv6JLpCJ3FfOrxo53fW7q+GlXXuVcQ2OGlgxm3eke6q2aXZAqczeB5CSlWgUEA5T3rQ//WI3enwTayRajV/9O26HZvASjSTnDRiSSv1itYqg1Uy6kuJy5ANpBizOyWY6/QTM5Rw00AXvaY9ur0EmyNe5vLNHyTxzdr4R+rXjE07yCDvWM9RGbu+4BipP+mAoJTkuCIP54FWYn1qOJnC8DYywD/+wniCNLbp6yMgbG/aC6H5RmuSy+3xRoEbwvyXKUgA+4gL3I3aAIvidBG+yazRBFvRCn4pUJdTEc4Cpu0jhQWXWyZSE66HNPKyIOXl9JPTzul08MDo9OaqBt+K3yeMVA8EPr196mWLwerF+dExQ2PJhUu/7MAiOgFrIr4/d05iKhj4ivLYBRNN317s2NVo8qyfhPHlfv6PyzhllC/qjClQ2rLOemVhg=
