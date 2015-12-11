@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.4.0
+* Allows definition of multiple directives in matching rules
+
 ## 0.3.0
 * Increased apt dependency
 * Module pinning on rspec tests
