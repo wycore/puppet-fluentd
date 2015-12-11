@@ -31,9 +31,9 @@
 #         'shared_key'     => 'my_shared_key',
 #         'self_hostname'  => 'instance.test.com',
 #         'ca_cert_path'   => '/path/to/ca.cert',
-#         'servers'        => {
+#         'server'         => [{
 #           'host' => 'test.server.com'
-#         }
+#         }]
 #       }
 #     }
 #

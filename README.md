@@ -14,6 +14,7 @@
     * [Source](#source)
     * [Filter](#filter)
     * [Match](#match)
+    * [Match Store](#match-store)
   * [Plugin Installation](#plugin-installation)
   * [Requirements](#requirements)
 1. [Limitations - OS compatibility, etc.](#limitations)
@@ -97,9 +98,9 @@ include '::fluentd'
     'shared_key'     => 'my_shared_key',
     'self_hostname'  => 'instance.test.com',
     'ca_cert_path'   => '/path/to/ca.cert',
-    'servers'        => {
-      'host' => 'test.server.com'
-    }
+    'server'        => [{
+      'host' => 'test.server.com',
+    }]
   }
 }
 ```
@@ -113,9 +114,48 @@ include '::fluentd'
   shared_key my_shared_key
   self_hostname instance.test.com
   ca_cert_path /path/to/ca.cert
-  <servers>
+  <server>
     host test.server.com
-  </servers>
+  </server>
+</match>
+```
+### Match Store
+```puppet
+::fluentd::match { 'test':
+  priority => 30,
+  pattern  => '*.test',
+  config: {
+    'type'  => 'copy',
+    'store' => [
+      {
+        'type'           => 'elasticsearch',
+        'logstashformat' => true,
+        'hosts'          => '172.20.10.17:9200',
+        'flush_interval' => '30s',
+      },
+      {
+        'type' => 'file',
+        'path' => '/tmp/td-agent-debug.log',
+      }
+    ]
+  }
+}
+```
+**creates:**
+```
+/etc/td-agent/conf.d/30-match-test.conf
+<match *.test>
+  type copy
+  <store>
+    type elasticsearch
+    logstash_format true
+    hosts 172.20.10.17:9200
+    flush_interval 30s
+  </store>
+  <store>
+    type file
+    path /tmp/crs
+  </store>
 </match>
 ```
 

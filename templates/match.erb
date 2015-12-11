@@ -6,6 +6,32 @@
             <%= key -%> <%= val %>
         <%- end -%>
         </<%= key %>>
+    <%- elsif val.is_a?( Array ) -%>
+        <%- val.each do |k, v| -%>
+            <<%= key -%>>
+            <%- if k.is_a?( Hash ) -%>
+                <%- k.each do |x, y| -%>
+                    <%- if y.is_a?( Array ) -%>
+                        <%- y.each do |a, b| -%>
+                            <<%= x -%>>
+                            <%- if a.is_a?( Hash ) -%>
+                                <%- a.each do |c, d| -%>
+                                    <%= c -%> <%= d %>
+                                <%- end -%>
+                            <%- else -%>
+                                <%= a -%> <%= b %>
+                            <%- end -%>
+                            </<%= x %>>
+                        <%- end -%>
+                    <%- else -%>
+                        <%= x -%> <%= y %>
+                    <%- end -%>
+                <%- end -%>
+            <%- else -%>
+                <%= k -%> <%= v %>
+            <%- end -%>
+            </<%= key %>>
+        <%- end -%>
     <%- else -%>
         <%= key -%> <%= val %>
     <%- end -%>
