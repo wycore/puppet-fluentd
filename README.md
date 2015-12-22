@@ -11,6 +11,7 @@
 1. [Setup - The basics of getting started with fluentd](#setup)
 1. [Usage](#usage)
   * [Configuration](#configuration)
+    * [Parameters](#parameters)
     * [Source](#source)
     * [Filter](#filter)
     * [Match](#match)
@@ -40,6 +41,44 @@ include '::fluentd'
 **By default this module doesn't configure any sources, matches or filters.** The section below describes how to configure these.
 
 ### Configuration
+
+#### Parameters
+
+`manage_repo`
+  Include repository to install recent fluentd (td-agent) from
+  **Default:** 'true'
+`package_ensure`
+  Package ensure
+  **Default:** 'installed'
+`package_name`
+  Package name
+  **Default:** 'td-agent'
+`package_install_options`
+  Package install options
+  **Default:** '[]'
+`service_manage`
+  Defines if the service should be managed by puppet
+  **Default:** 'true'
+`service_name`
+  Name of the service
+  **Default:** 'td-agent'
+`service_ensure`
+  Service ensure
+  **Default:** 'running'
+`service_enabled`
+  Defines if the service should be enabled
+  **Default:** 'true'
+`user_manage`
+  Defines if the user should be manage, which will add the user
+  to groups defined in `user_groups`.
+  For example to be able to view the /var/log directory with group adm
+  **Default:** 'true'
+`user_name`
+  **Default:** 'td-agent'
+`user_group`
+  **Default:** 'td-agent'
+`user_groups`
+  **Default:** '["adm"]'
 
 #### Source
 ```puppet
