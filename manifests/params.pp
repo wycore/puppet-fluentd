@@ -13,8 +13,10 @@ class fluentd::params {
   $conf_dir    = "${config_path}/conf.d"
   $config_file = "${config_path}/td-agent.conf"
   # user params
-  $user_name  = 'td-agent'
-  $user_group = 'td-agent'
+  $user_manage = true
+  $user_name   = 'td-agent'
+  $user_group  = 'td-agent'
+  $user_groups = ['adm']
 
   case $::osfamily {
     'Debian': {
