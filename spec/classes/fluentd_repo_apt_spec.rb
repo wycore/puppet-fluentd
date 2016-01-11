@@ -15,7 +15,7 @@ describe 'fluentd::repo::apt', :type => :class do
       should contain_class('apt')
       should contain_apt__source('treasure-data').with({
         'ensure'   => 'present',
-        'location' => 'http://packages.treasuredata.com/2/ubuntu/precise',
+        'location' => 'https://packages.treasuredata.com/2/ubuntu/precise',
         'release'  => 'precise',
         'repos'    => 'contrib',
         'key'      => {
