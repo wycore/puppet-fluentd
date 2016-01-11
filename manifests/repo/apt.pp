@@ -2,7 +2,7 @@
 #
 class fluentd::repo::apt (
   $ensure   = 'present',
-  $location = downcase("http://packages.treasuredata.com/2/${::operatingsystem}/${::lsbdistcodename}"),
+  $location = downcase("https://packages.treasuredata.com/2/${::operatingsystem}/${::lsbdistcodename}"),
   $release  = $::lsbdistcodename,
   $repos    = 'contrib',
   $key      = {
