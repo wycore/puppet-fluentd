@@ -54,6 +54,12 @@
 #
 class fluentd (
   $manage_repo             = $::fluentd::params::manage_repo,
+  $repo_gpgcheck           = $::fluentd::params::repo_gpgcheck,
+  $repo_gpgkey             = $::fluentd::params::repo_gpgkey,
+  $repo_gpgkeyid           = $::fluentd::params::repo_gpgkeyid,
+  $repo_url                = $::fluentd::params::repo_url,
+  $repo_name               = $::fluentd::params::repo_name,
+  $repo_desc               = $::fluentd::params::repo_desc,
   $package_ensure          = $::fluentd::params::package_ensure,
   $package_name            = $::fluentd::params::package_name,
   $package_install_options = $::fluentd::params::package_install_options,

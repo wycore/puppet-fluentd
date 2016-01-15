@@ -1,23 +1,20 @@
 # Configure apt::source
 #
-class fluentd::repo::apt (
-  $ensure   = 'present',
-  $location = downcase("https://packages.treasuredata.com/2/${::operatingsystem}/${::lsbdistcodename}"),
-  $release  = $::lsbdistcodename,
-  $repos    = 'contrib',
-  $key      = {
-    'id'     => 'C901622B5EC4AF820C38AB861093DB45A12E206F',
-    'source' => 'https://packages.treasuredata.com/GPG-KEY-td-agent'
-  },
-) {
+class fluentd::repo::apt inherits fluentd {
 
-  include '::apt'
-
-  apt::source { 'treasure-data':
-    ensure   => $ensure,
-    location => $location,
-    release  => $release,
-    repos    => $repos,
-    key      => $key,
+  apt::source { $fluentd::repo_name:
+    location      => $fluentd::repo_url,
+    comment       => $fluentd::repo_desc,
+    repos         => 'contrib',
+    architecture  => 'amd64',
+    release       => $fluentd::distro_codename,
+    key           => {
+      id      => $fluentd::repo_gpgkeyid,
+      source  => $fluentd::repo_gpgkey,
+    },
+    include       => {
+      'src'   => false,
+      'deb'   => true,
+    },
   }
 }
