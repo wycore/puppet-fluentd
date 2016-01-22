@@ -1,13 +1,7 @@
 require 'beaker-rspec'
-require 'pry'
+require 'beaker/puppet_install_helper'
 
-hosts.each do |host|
-  # Install Puppet
-  on host, 'apt-get -y install ruby1.9.1 rubygems ruby1.9.1-dev libaugeas-ruby1.9.1'
-  on host, 'update-alternatives --set ruby /usr/bin/ruby1.9.1'
-  on host, 'update-alternatives --set gem /usr/bin/gem1.9.1'
-  on host, install_puppet
-end
+run_puppet_install_helper unless ENV['BEAKER_provision'] == 'no'
 
 RSpec.configure do |c|
   # Project root
@@ -21,8 +15,8 @@ RSpec.configure do |c|
     # Install module
     puppet_module_install(:source => module_root, :module_name => 'fluentd')
     hosts.each do |host|
-      on host, puppet('module', 'install', 'puppetlabs-stdlib', '--version', '4.9.0')
-      on host, puppet('module', 'install', 'puppetlabs-apt', '--version', '2.1.1')
+      on host, puppet('module', 'install', 'puppetlabs-stdlib', '--version', '4.6.0')
+      on host, puppet('module', 'install', 'puppetlabs-apt', '--version', '2.0.0')
     end
   end
 end
