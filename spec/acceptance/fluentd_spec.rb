@@ -14,7 +14,7 @@ RSpec.describe 'fluentd' do
   end
 
   describe service('td-agent') do
-    it { is_expected.to be_enabled.with_level(3) }
+    it { is_expected.to be_enabled }
     it { is_expected.to be_running }
   end
 end

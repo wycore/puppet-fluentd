@@ -6,5 +6,5 @@ HOSTS:
     box: puppetlabs/ubuntu-12.04-64-nocm
     hypervisor: vagrant
 CONFIG:
-  log_level: verbose
+  log_level: info
   type: foss

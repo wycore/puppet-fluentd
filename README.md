@@ -265,6 +265,10 @@ bundle install --path vendor/bundle
 bundle exec rake spec
 bundle exec rake lint
 bundle exec rake beaker BEAKER_set=ubuntu-server-1204-x64
+bundle exec rake beaker BEAKER_set=ubuntu-server-1404-x64
+bundle exec rake beaker BEAKER_set=debian-60-x64
+bundle exec rake beaker BEAKER_set=debian-78-x64
+bundle exec rake beaker BEAKER_set=debian-82-x64
 ```
 
 ## License
