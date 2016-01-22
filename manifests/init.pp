@@ -5,7 +5,7 @@
 #
 # Parameters
 # ----------
-# [*manage_repo*]
+# [*repo_manage*]
 #   Include repository to install recent fluentd (td-agent) from
 #   Default: 'true'
 # [*package_ensure*]
@@ -53,7 +53,7 @@
 # Copyright 2015 wywy GmbH, unless otherwise noted.
 #
 class fluentd (
-  $manage_repo             = $::fluentd::params::manage_repo,
+  $repo_manage             = $::fluentd::params::repo_manage,
   $package_ensure          = $::fluentd::params::package_ensure,
   $package_name            = $::fluentd::params::package_name,
   $package_install_options = $::fluentd::params::package_install_options,
@@ -71,7 +71,7 @@ class fluentd (
 ) inherits fluentd::params {
 
   # parameter validation
-  validate_bool($manage_repo)
+  validate_bool($repo_manage)
   validate_string($package_ensure)
   validate_string($package_name)
   validate_array($package_install_options)

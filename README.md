@@ -44,7 +44,7 @@ include '::fluentd'
 
 #### Parameters
 
-`manage_repo`
+`repo_manage`
 
   Include repository to install recent fluentd (td-agent) from.
   **Default:** 'true'

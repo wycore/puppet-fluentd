@@ -22,7 +22,7 @@ class fluentd::params {
     'Debian': {
       case $::operatingsystem {
         'Ubuntu': {
-          $manage_repo = true
+          $repo_manage = true
         }
         default: {
           fail("Unsupported osfamily: ${::operatingsystem}")
