@@ -6,6 +6,9 @@ class fluentd::repo inherits fluentd {
       'Debian': {
         include ::fluentd::repo::apt
       }
+      'RedHat': {
+        include ::fluentd::repo::yum
+      }
       default: {
         fail("No repo available for ${::osfamily}/${::operatingsystem}")
       }

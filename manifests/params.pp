@@ -22,6 +22,9 @@ class fluentd::params {
     'Debian': {
       $repo_manage = true
     }
+    'Redhat': {
+      $repo_manage = true
+    }
     default: {
       fail("Unsupported osfamily: ${::osfamily}")
     }
