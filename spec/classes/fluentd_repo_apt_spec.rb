@@ -23,6 +23,10 @@ describe 'fluentd::repo::apt', :type => :class do
         'key'          => {
           'id'     => 'C901622B5EC4AF820C38AB861093DB45A12E206F',
           'source' => 'http://packages.treasuredata.com/GPG-KEY-td-agent'
+        },
+        'include'      => {
+          'src' => false,
+          'deb' => true
         }
       })
     }
