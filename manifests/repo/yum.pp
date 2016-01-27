@@ -19,7 +19,8 @@ class fluentd::repo::yum (
   }
 
   exec { 'add GPG key':
-    command     => "/usr/bin/rpm --import ${fluentd::repo::yum::gpgkey}",
+    command     => "rpm --import ${fluentd::repo::yum::gpgkey}",
+    path        => '/bin:/usr/bin/',
     refreshonly => true,
   }
 }
