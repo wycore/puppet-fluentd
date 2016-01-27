@@ -1,6 +1,7 @@
 # Configure yumrepo
 #
 class fluentd::repo::yum (
+  $ensure   = 'present',
   $descr    = 'TreasureData',
   $baseurl  = 'https://packages.treasuredata.com/2/redhat/$releasever/$basearch',
   $enabled  = '1',
@@ -9,6 +10,7 @@ class fluentd::repo::yum (
 ) {
 
   yumrepo { 'treasure-data':
+    ensure   => $ensure,
     descr    => $descr,
     baseurl  => $baseurl,
     enabled  => $enabled,
