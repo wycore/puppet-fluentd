@@ -8,8 +8,6 @@ class fluentd::repo::yum (
   $gpgkey   = 'https://packages.treasuredata.com/GPG-KEY-td-agent',
 ) {
 
-  include '::yumrepo'
-
   yumrepo { 'treasure-data':
     descr    => $descr,
     baseurl  => $baseurl,
