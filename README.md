@@ -186,7 +186,7 @@ include '::fluentd'
 ::fluentd::match { 'test':
   priority => 30,
   pattern  => '*.test',
-  config: {
+  config   => {
     'type'  => 'copy',
     'store' => [
       {
