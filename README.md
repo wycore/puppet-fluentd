@@ -228,7 +228,8 @@ This module gives you the possibility to install plugins as gem or files.
 **gem installation**
 ```puppet
 ::fluentd::plugin { 'fluent-plugin-elasticsearch':
-  type => 'gem'
+  type => 'gem',
+  ensure => '0.1.3'
 }
 ```
 **file installation**

@@ -31,11 +31,6 @@ define fluentd::plugin (
   $source = undef,
 ) {
 
-  # parameter validation
-  if ! ($ensure in [ 'present', 'absent' ]) {
-    fail('ensure parameter must be present or absent')
-  }
-
   case $type {
     'gem': {
       fluentd::plugin::gem { $name:
@@ -44,6 +39,10 @@ define fluentd::plugin (
       }
     }
     'file': {
+      # parameter validation
+      if ! ($ensure in [ 'present', 'absent' ]) {
+        fail('ensure parameter must be present or absent')
+      }
       validate_string($source)
 
       fluentd::plugin::file { $name:
