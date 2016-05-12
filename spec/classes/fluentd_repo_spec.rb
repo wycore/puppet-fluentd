@@ -9,6 +9,7 @@ describe 'fluentd::repo', :type => :class do
         :lsbdistid       => 'Ubuntu',
         :operatingsystem => 'Ubuntu',
         :lsbdistcodename => 'precise',
+        :architecture    => 'amd64',
       }
     }
     it {

@@ -19,6 +19,7 @@ describe 'fluentd::install', :type => :class do
         :lsbdistid       => 'Ubuntu',
         :operatingsystem => 'Ubuntu',
         :lsbdistcodename => 'precise',
+        :architecture    => 'amd64',
       }
     }
     include_examples 'when called with no parameters'
