@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.5.1
+* Allow to install specific version of fluent gem plugins
+
 ## 0.5.0
 * Added support for Debian 6, 7, 8
 * Added support for CentOS 6, 7
