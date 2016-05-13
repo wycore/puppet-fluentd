@@ -20,6 +20,7 @@ describe 'fluentd::config', :type => :class do
         :lsbdistid       => 'Ubuntu',
         :operatingsystem => 'Ubuntu',
         :lsbdistcodename => 'precise',
+        :architecture    => 'amd64',
       }
     }
 

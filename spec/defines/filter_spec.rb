@@ -7,6 +7,7 @@ describe 'fluentd::filter' do
       :lsbdistid       => 'Ubuntu',
       :operatingsystem => 'Ubuntu',
       :lsbdistcodename => 'precise',
+      :architecture    => 'amd64',
     }
   }
   let(:pre_condition) { 'include fluentd' }
