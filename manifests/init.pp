@@ -26,7 +26,7 @@
 # [*service_ensure*]
 #   Service ensure
 #   Default: 'running'
-# [*service_enabled*]
+# [*service_enable*]
 #   Defines if the service should be enabled
 #   Default: 'true'
 # [*user_manage*]
