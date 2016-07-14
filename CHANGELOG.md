@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.5.2
+* Correct the docs related to the service_enable parameter
+
 ## 0.5.1
 * Allow to install specific version of fluent gem plugins
 
