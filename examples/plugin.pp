@@ -5,5 +5,5 @@
 # file installation
 ::fluentd::plugin { 'fluent-plugin-elasticsearch':
   type   => 'file',
-  source => 'puppet:///path/to/plugin'
+  source => 'puppet://path/to/plugin'
 }
