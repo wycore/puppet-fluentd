@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.5.3
+* update treasure data repo gpg key
+
 ## 0.5.2
 * Correct the docs related to the service_enable parameter
 
