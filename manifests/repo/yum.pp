@@ -26,6 +26,7 @@ class fluentd::repo::yum (
 
   exec { 'remove old GPG key':
     command => 'rpm -e --allmatches gpg-pubkey-a12e206f-*',
+    path        => '/bin:/usr/bin/',
     onlyif  => 'rpm -qi gpg-pubkey-a12e206f-*',
     notify  => Exec['add GPG key'],
   }
