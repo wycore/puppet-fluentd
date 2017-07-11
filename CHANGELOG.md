@@ -1,4 +1,7 @@
 # Changelog
+## 0.5.4
+* fixed templates/filter.erb
+* fixed removing of old GPG key for yum repos
 
 ## 0.5.3
 * update treasure data repo gpg key
