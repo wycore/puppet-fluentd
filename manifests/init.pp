@@ -91,9 +91,9 @@ class fluentd (
   include '::fluentd::service'
 
   # dependencies
-  Class['::Fluentd::Repo']    ->
-  Class['::Fluentd::Install'] ->
-  Class['::Fluentd::User']    ->
-  Class['::Fluentd::Config']  ->
-  Class['::Fluentd::Service']
+  Class['::Fluentd::Repo']
+  -> Class['::Fluentd::Install']
+  -> Class['::Fluentd::User']
+  -> Class['::Fluentd::Config']
+  -> Class['::Fluentd::Service']
 }
