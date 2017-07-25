@@ -1,4 +1,8 @@
 # Changelog
+## 0.5.5
+* Added `conf_dir_manage` parameter (Default: false)
+  * Exclusively handle config files into fluentd::conf_dir. Other files not created by puppet, will be deleted
+
 ## 0.5.4
 * fixed templates/filter.erb
 * fixed removing of old GPG key for yum repos
