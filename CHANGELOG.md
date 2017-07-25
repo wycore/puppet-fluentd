@@ -1,4 +1,7 @@
 # Changelog
+## 0.5.6
+* Fixed `conf_dir_manage` parameter call
+
 ## 0.5.5
 * Added `conf_dir_manage` parameter (Default: false)
   * Exclusively handle config files into fluentd::conf_dir. Other files not created by puppet, will be deleted
