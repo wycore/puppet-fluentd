@@ -11,6 +11,7 @@ class fluentd::params {
   # config params
   $config_path = '/etc/td-agent'
   $conf_dir    = "${config_path}/conf.d"
+  $conf_dir_manage = false
   $config_file = "${config_path}/td-agent.conf"
   # user params
   $user_manage = true

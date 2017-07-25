@@ -8,6 +8,9 @@
 # [*repo_manage*]
 #   Include repository to install recent fluentd (td-agent) from
 #   Default: 'true'
+# [*conf_dir_manage*]
+#   Exclusively handle config files into fluentd::conf_dir. Other files not created by puppet, will be deleted
+#   Default: 'false'
 # [*package_ensure*]
 #   Package ensure
 #   Default: 'installed'
@@ -63,6 +66,7 @@ class fluentd (
   $service_enable          = $::fluentd::params::service_enable,
   $config_path             = $::fluentd::params::config_path,
   $conf_dir                = $::fluentd::params::conf_dir,
+  $conf_dir_manage         = $::fluentd::params::conf_dir_manage,
   $config_file             = $::fluentd::params::config_file,
   $user_manage             = $::fluentd::params::user_manage,
   $user_name               = $::fluentd::params::user_name,

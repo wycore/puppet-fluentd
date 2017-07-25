@@ -11,9 +11,11 @@ class fluentd::config inherits fluentd {
   }
 
   file { $::fluentd::conf_dir:
-    ensure => 'directory',
-    owner  => $::fluentd::user_name,
-    group  => $::fluentd::user_group,
-    mode   => '0750',
+    ensure  => 'directory',
+    recurse => $::fluentd::params::conf_dir_manage,
+    purge   => $::fluentd::params::conf_dir_manage,
+    owner   => $::fluentd::user_name,
+    group   => $::fluentd::user_group,
+    mode    => '0750',
   }
 }
