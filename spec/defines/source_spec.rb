@@ -28,12 +28,7 @@ describe 'fluentd::source' do
 
     it do
       is_expected.to contain_file('/etc/td-agent/conf.d/10-source-test.conf').
-        with_content(/<source>/).
-        with_content(/type tail/).
-        with_content(/format json/).
-        with_content(/path \/var\/log\/test-application\/\*.json/).
-        with_content(/tag application.test/).
-        with_content(/<\/source>/)
+          with_content(IO.read(File.join(File.dirname(__FILE__), '../fixtures/files/source_tail.conf')))
     end
   end
 end
