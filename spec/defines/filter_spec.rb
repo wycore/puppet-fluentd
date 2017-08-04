@@ -29,12 +29,7 @@ describe 'fluentd::filter' do
 
     it do
       is_expected.to contain_file('/etc/td-agent/conf.d/20-filter-test.conf').
-        with_content(/<filter \*.test>/).
-        with_content(/type record_transformer/).
-        with_content(/<record>/).
-        with_content(/hostname \$\{hostname\}/).
-        with_content(/<\/record>/).
-        with_content(/<\/filter>/)
+        with_content(IO.read(File.join(File.dirname(__FILE__), '../fixtures/files/filter_record_transformer.conf')))
     end
   end
 end

@@ -36,17 +36,7 @@ describe 'fluentd::match' do
 
     it do
       is_expected.to contain_file('/etc/td-agent/conf.d/30-match-test.conf').
-        with_content(/<match \*.test>/).
-        with_content(/flush_interval 30s/).
-        with_content(/type secure_forward/).
-        with_content(/secure yes/).
-        with_content(/shared_key my_shared_key/).
-        with_content(/self_hostname instance.test.com/).
-        with_content(/ca_cert_path \/path\/to\/ca.cert/).
-        with_content(/<server>/).
-        with_content(/host test.server.com/).
-        with_content(/<\/server>/).
-        with_content(/<\/match>/)
+          with_content(IO.read(File.join(File.dirname(__FILE__), '../fixtures/files/match_secure_forward.conf')))
     end
   end
 
@@ -76,19 +66,7 @@ describe 'fluentd::match' do
 
     it do
       is_expected.to contain_file('/etc/td-agent/conf.d/30-match-test.conf').
-          with_content(/<match \*.test>/).
-          with_content(/type copy/).
-          with_content(/<store>/).
-          with_content(/type elasticsearch/).
-          with_content(/logstashformat true/).
-          with_content(/hosts 172.20.10.17:9200/).
-          with_content(/flush_interval 30s/).
-          with_content(/<\/store>/).
-          with_content(/<store>/).
-          with_content(/type file/).
-          with_content(/path \/tmp\/td-agent-debug.log/).
-          with_content(/<\/store>/).
-          with_content(/<\/match>/)
+          with_content(IO.read(File.join(File.dirname(__FILE__), '../fixtures/files/match_copy.conf')))
     end
   end
 end
