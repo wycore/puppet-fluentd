@@ -48,42 +48,62 @@ include '::fluentd'
 
   Include repository to install recent fluentd (td-agent) from.
   **Default:** 'true'
- 
+
 `package_ensure`
 
   Package ensure.
   **Default:** 'installed'
- 
+
 `package_name`
 
   Package name.
   **Default:** 'td-agent'
- 
+
 `package_install_options`
 
   Package install options.
   **Default:** '[]'
- 
+
 `service_manage`
 
   Defines if the service should be managed by puppet.
   **Default:** 'true'
- 
+
 `service_name`
 
   Name of the service.
   **Default:** 'td-agent'
- 
+
 `service_ensure`
 
   Service ensure.
   **Default:** 'running'
- 
+
 `service_enable`
 
   Defines if the service should be enabled.
   **Default:** 'true'
- 
+
+`config_path`
+
+  Path to configuration files
+  **Default:** '/etc/td-agent'
+  
+`config_dir`
+
+  Configuration directory name
+  **Default:** '${config_path}/conf.d'
+
+`config_file`
+
+  Default configuration file name
+  **Default:** '${config_path}/td-agent.conf'
+
+`conf_dir_manage`
+
+  Exclusively handle config files into fluentd::conf_dir. Other files not created by puppet, will be deleted
+  **Default:** 'false'
+
 `user_manage`
 
   Defines if the user should be manage, which will add the user
@@ -94,11 +114,11 @@ include '::fluentd'
 `user_name`
 
   **Default:** 'td-agent'
- 
+
 `user_group`
 
   **Default:** 'td-agent'
- 
+
 `user_groups`
 
   **Default:** '["adm"]'
