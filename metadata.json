@@ -1,5 +1,5 @@
 {
-  "name": "wywy-fluentd",
+  "name": "wywygmbh-fluentd",
   "version": "0.5.6",
   "author": "wywy",
   "summary": "Generic module for fluentd (td-agent).",

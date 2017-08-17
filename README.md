@@ -1,7 +1,7 @@
 # wywy/fluentd Puppet Module
 
-[![GitHub version](https://badge.fury.io/gh/wywygmbh%2Fpuppet-fluentd.svg)](https://github.com/wywy/puppet-fluentd)
-[![Build Status](https://travis-ci.org/wywygmbh/puppet-fluentd.svg?branch=master)](https://travis-ci.org/wywygmbh/puppet-fluentd)
+[![GitHub version](https://badge.fury.io/gh/wywy%2Fpuppet-fluentd.svg)](https://github.com/wywy/puppet-fluentd)
+[![Build Status](https://travis-ci.org/wywy/puppet-fluentd.svg?branch=master)](https://travis-ci.org/wywy/puppet-fluentd)
 
 
 
