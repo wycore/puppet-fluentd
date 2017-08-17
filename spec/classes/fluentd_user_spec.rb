@@ -1,37 +1,21 @@
 require 'spec_helper'
 
 describe 'fluentd::user', :type => :class do
-  shared_examples 'when called with no parameters' do
-    it {
-      should contain_user('fluentd').with({
-        'name'   => 'td-agent',
-        'gid'    => 'td-agent',
-        'groups' => ['adm']
-      })
-    }
-  end
+  on_supported_os.each do |os, facts|
+    context "on #{os}" do
+      let :facts do
+        facts
+      end
 
-  context 'when osfamily is Debian' do
-    let(:facts) {
-      {
-        :osfamily        => 'Debian',
-        :lsbdistid       => 'Ubuntu',
-        :operatingsystem => 'Ubuntu',
-        :lsbdistcodename => 'precise',
-        :architecture    => 'amd64',
-      }
-    }
-
-    include_examples 'when called with no parameters'
-  end
-
-  context 'when osfamily is RedHat' do
-    let(:facts) {
-      {
-        :osfamily => 'RedHat',
-      }
-    }
-
-    include_examples 'when called with no parameters'
+      describe 'when called with no parameters' do
+        it {
+          should contain_user('fluentd').with({
+            'name'   => 'td-agent',
+            'gid'    => 'td-agent',
+            'groups' => ['adm']
+          })
+        }
+      end
+    end
   end
 end
