@@ -40,7 +40,7 @@
 # Copyright
 # ---------
 #
-# Copyright 2015 wywy GmbH, unless otherwise noted.
+# Copyright 2015 wywy, unless otherwise noted.
 #
 define fluentd::match (
   $ensure   = present,

@@ -1,12 +1,12 @@
 {
   "name": "wywygmbh-fluentd",
   "version": "0.5.6",
-  "author": "wywy GmbH",
+  "author": "wywy",
   "summary": "Generic module for fluentd (td-agent).",
   "license": "Apache-2.0",
-  "source": "https://github.com/wywygmbh/puppet-fluentd",
-  "project_page": "https://github.com/wywygmbh/puppet-fluentd",
-  "issues_url": "https://github.com/wywygmbh/puppet-fluentd/issues",
+  "source": "https://github.com/wywy/puppet-fluentd",
+  "project_page": "https://github.com/wywy/puppet-fluentd",
+  "issues_url": "https://github.com/wywy/puppet-fluentd/issues",
   "tags": ["fluentd", "td-agent"],
   "operatingsystem_support": [
     {

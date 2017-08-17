@@ -62,7 +62,7 @@
 # Copyright
 # ---------
 #
-# Copyright 2015 wywy GmbH, unless otherwise noted.
+# Copyright 2015 wywy, unless otherwise noted.
 #
 class fluentd (
   $repo_manage             = $::fluentd::params::repo_manage,

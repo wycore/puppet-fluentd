@@ -1,7 +1,7 @@
-# wywygmbh/fluentd Puppet Module
+# wywy/fluentd Puppet Module
 
-[![GitHub version](https://badge.fury.io/gh/wywygmbh%2Fpuppet-fluentd.svg)](https://github.com/wywygmbh/puppet-fluentd)
-[![Build Status](https://travis-ci.org/wywygmbh/puppet-fluentd.svg?branch=master)](https://travis-ci.org/wywygmbh/puppet-fluentd)
+[![GitHub version](https://badge.fury.io/gh/wywy%2Fpuppet-fluentd.svg)](https://github.com/wywy/puppet-fluentd)
+[![Build Status](https://travis-ci.org/wywy/puppet-fluentd.svg?branch=master)](https://travis-ci.org/wywy/puppet-fluentd)
 
 
 
@@ -296,7 +296,7 @@ bundle exec rake beaker BEAKER_set=centos-70-x64
 
 ## License
 
-Copyright 2015 wywy GmbH
+Copyright 2015 wywy
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -310,4 +310,4 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 
-This Puppet module is being actively maintained by some fellow puppeteers at [wywy GmbH](http://wywy.com/).
+This Puppet module is being actively maintained by some fellow puppeteers at [wywy](http://wywy.com/).
