@@ -7,6 +7,7 @@ gem 'puppet-lint', '>= 1.0.0'
 gem 'facter', '>= 1.7.0'
 gem 'beaker-puppet_install_helper'
 gem 'metadata-json-lint'
+gem 'rspec-puppet-facts', '~> 1.7'
 
 beakerrspec = '> 0'
 platforms [:ruby_19, :ruby_21] do

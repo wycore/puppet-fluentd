@@ -1,30 +1,21 @@
 require 'spec_helper'
 
 describe 'fluentd::repo', :type => :class do
+  on_supported_os.each do |os, facts|
+    context "on #{os}" do
+      let :facts do
+        facts
+      end
 
-  context 'when called with no parameters on osfamily Debian' do
-    let(:facts) {
-      {
-        :osfamily        => 'Debian',
-        :lsbdistid       => 'Ubuntu',
-        :operatingsystem => 'Ubuntu',
-        :lsbdistcodename => 'precise',
-        :architecture    => 'amd64',
-      }
-    }
-    it {
-      should contain_class('fluentd::repo::apt')
-    }
-  end
-
-  context 'when called with no parameters on osfamily RedHat' do
-    let(:facts) {
-      {
-        :osfamily => 'RedHat',
-      }
-    }
-    it {
-      should contain_class('fluentd::repo::yum')
-    }
+      describe 'when called with no parameters' do
+        case facts[:osfamily]
+        when 'Debian'
+          it { is_expected.to contain_class('fluentd::repo::apt') }
+        when 'RedHat'
+          it { is_expected.to contain_class('fluentd::repo::yum') }
+        end
+      end
+    end
   end
 end
+
