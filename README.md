@@ -296,7 +296,7 @@ bundle exec rake beaker BEAKER_set=centos-70-x64
 
 ## License
 
-Copyright 2015 wywy
+Copyright 2017 ATVAG GmbH
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
