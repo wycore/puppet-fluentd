@@ -1,6 +1,6 @@
 {
   "name": "wywygmbh-fluentd",
-  "version": "0.5.6",
+  "version": "0.6.0",
   "author": "wywy",
   "summary": "Generic module for fluentd (td-agent).",
   "license": "Apache-2.0",

@@ -1,4 +1,10 @@
 # Changelog
+## 0.6.0
+* Updated README
+* fixed broken links, due to github organisation rename
+* fixed indentation for config files (filter, match, source)
+* use rspec-puppet-facts for unit testing
+
 ## 0.5.6
 * Fixed `conf_dir_manage` parameter call
 
