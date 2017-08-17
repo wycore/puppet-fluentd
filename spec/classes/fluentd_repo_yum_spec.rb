@@ -7,7 +7,6 @@ describe 'fluentd::repo::yum', :type => :class do
         facts
       end
 
-
       describe 'when called with no parameters' do
         case facts[:osfamily]
         when 'RedHat'
