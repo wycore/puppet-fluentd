@@ -1,7 +1,8 @@
 <match <%= @pattern %>>
 <% @config.each do |key, val| -%>
+  <%- if key == 'buffer_chunk_keys'; next; end-%>
   <%- if val.is_a?( Hash ) -%>
-  <<%= key -%>>
+  <<%= key -%><%- if key == 'buffer' && !@config['buffer_chunk_keys'].nil? -%> <%= @config['buffer_chunk_keys'] -%><%- end -%>>
   <%- val.each do |key, val| -%>
     <%= key -%> <%= val %>
   <%- end -%>
@@ -13,7 +14,7 @@
     <%- k.each do |x, y| -%>
     <%- if y.is_a?( Array ) -%>
     <%- y.each do |a, b| -%>
-    <<%= x -%>>
+    <<%= x -%><%- if x == 'buffer' && !k['buffer_chunk_keys'].nil? -%> <%= k['buffer_chunk_keys'] -%><%- end -%>>
       <%- if a.is_a?( Hash ) -%>
       <%- a.each do |c, d| -%>
       <%= c -%> <%= d %>
@@ -24,6 +25,7 @@
     </<%= x %>>
     <%- end -%>
     <%- else -%>
+    <%- if x == 'buffer_chunk_keys'; next; end -%>
     <%= x -%> <%= y %>
     <%- end -%>
     <%- end -%>

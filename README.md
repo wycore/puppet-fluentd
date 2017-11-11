@@ -15,6 +15,7 @@
     * [Source](#source)
     * [Filter](#filter)
     * [Match](#match)
+    * [Match with buffer and chunk_keys](#match-with-buffer-and-chunk_keys)
     * [Match Store](#match-store)
   * [Plugin Installation](#plugin-installation)
   * [Requirements](#requirements)
@@ -88,7 +89,7 @@ include '::fluentd'
 
   Path to configuration files
   **Default:** '/etc/td-agent'
-  
+
 `config_dir`
 
   Configuration directory name
@@ -131,7 +132,10 @@ include '::fluentd'
     'type'   => 'tail',
     'format' => 'json',
     'path'   => '/var/log/test-application/*.json',
-    'tag'    => 'application.test'
+    'tag'    => 'application.test',
+    'parse'  => {
+      'message_format' => 'auto'
+    }
   }
 }
 ```
@@ -143,6 +147,9 @@ include '::fluentd'
   format json
   path /var/log/test-application/*.json
   tag application.test
+  <parse>
+    message_format auto
+  </parse>
 </source>
 ```
 #### Filter
@@ -201,7 +208,41 @@ include '::fluentd'
   </server>
 </match>
 ```
-### Match Store
+#### Match with buffer and chunk_keys
+
+buffer_chunk_keys will not be included in the template. They will be filtered and only be used as a "pattern" for the buffer section.
+
+```
+::fluentd::match { 'test':
+  priority => 98,
+  pattern  => 'test.**',
+  config   => {
+    type              => 'file',
+    path              => '/var/log/td-agent/test/${host}',
+    append            => true,
+    buffer_chunk_keys => 'host',
+    buffer            => {
+      type       => file,
+      path       => /var/log/td-agent/test/buffer/,
+      flush_mode => immediate,
+    },
+  },
+}
+```
+**creates:**
+```
+<match test.**>
+  type file
+  path /var/log/td-agent/test/${host}
+  append true
+  <buffer host>
+    type file
+    path /var/log/td-agent/test/buffer/
+    flush_mode immediate
+  </buffer>
+</match>
+```
+#### Match Store
 ```puppet
 ::fluentd::match { 'test':
   priority => 30,
@@ -217,7 +258,13 @@ include '::fluentd'
       },
       {
         'type' => 'file',
-        'path' => '/tmp/td-agent-debug.log',
+        'path' => '/tmp/td-agent-debug-${host}.log',
+        'buffer_chunk_keys' => 'host',
+        'buffer'         => [{
+          '@type'    => 'file',
+          path       => '/var/log/td-agent/buffer/',
+          flush_mode => 'immediate',
+          }]
       }
     ]
   }
@@ -236,7 +283,11 @@ include '::fluentd'
   </store>
   <store>
     type file
-    path /tmp/crs
+    path /tmp/td-agent-debug-${host}.log
+    <buffer host>
+      @type file
+      path /var/log/td-agent/buffer/
+      flush_mode immediate
   </store>
 </match>
 ```
