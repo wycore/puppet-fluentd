@@ -65,36 +65,23 @@
 # Copyright 2015 wywy, unless otherwise noted.
 #
 class fluentd (
-  $repo_manage             = $::fluentd::params::repo_manage,
-  $package_ensure          = $::fluentd::params::package_ensure,
-  $package_name            = $::fluentd::params::package_name,
-  $package_install_options = $::fluentd::params::package_install_options,
-  $service_manage          = $::fluentd::params::service_manage,
-  $service_name            = $::fluentd::params::service_name,
-  $service_ensure          = $::fluentd::params::service_ensure,
-  $service_enable          = $::fluentd::params::service_enable,
-  $config_path             = $::fluentd::params::config_path,
-  $conf_dir                = $::fluentd::params::conf_dir,
-  $config_file             = $::fluentd::params::config_file,
-  $conf_dir_manage         = $::fluentd::params::conf_dir_manage,
-  $user_manage             = $::fluentd::params::user_manage,
-  $user_name               = $::fluentd::params::user_name,
-  $user_group              = $::fluentd::params::user_group,
-  $user_groups             = $::fluentd::params::user_groups,
+  Boolean                     $repo_manage             = $::fluentd::params::repo_manage,
+  String                      $package_ensure          = $::fluentd::params::package_ensure,
+  String                      $package_name            = $::fluentd::params::package_name,
+  Array                       $package_install_options = $::fluentd::params::package_install_options,
+  Boolean                     $service_manage          = $::fluentd::params::service_manage,
+  String                      $service_name            = $::fluentd::params::service_name,
+  Enum['running', 'stopped']  $service_ensure          = $::fluentd::params::service_ensure,
+  Boolean                     $service_enable          = $::fluentd::params::service_enable,
+  String                      $config_path             = $::fluentd::params::config_path,
+  String                      $conf_dir                = $::fluentd::params::conf_dir,
+  String                      $config_file             = $::fluentd::params::config_file,
+  Boolean                     $conf_dir_manage         = $::fluentd::params::conf_dir_manage,
+  Boolean                     $user_manage             = $::fluentd::params::user_manage,
+  String                      $user_name               = $::fluentd::params::user_name,
+  String                      $user_group              = $::fluentd::params::user_group,
+  Array                       $user_groups             = $::fluentd::params::user_groups,
 ) inherits fluentd::params {
-
-  # parameter validation
-  validate_bool($repo_manage)
-  validate_string($package_ensure)
-  validate_string($package_name)
-  validate_array($package_install_options)
-  validate_bool($service_manage)
-  validate_string($service_name)
-  validate_bool($service_enable)
-
-  if ! ($service_ensure in [ 'running', 'stopped' ]) {
-    fail('service_ensure parameter must be running or stopped')
-  }
 
   # class calls
   include '::fluentd::repo'

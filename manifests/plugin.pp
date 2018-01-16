@@ -26,9 +26,9 @@
 # Copyright 2015 wywy, unless otherwise noted.
 #
 define fluentd::plugin (
-  $ensure = present,
-  $type   = 'gem',
-  $source = undef,
+  String           $ensure = present,
+  String           $type   = 'gem',
+  Optional[String] $source = undef,
 ) {
 
   case $type {
@@ -43,7 +43,6 @@ define fluentd::plugin (
       if ! ($ensure in [ 'present', 'absent' ]) {
         fail('ensure parameter must be present or absent')
       }
-      validate_string($source)
 
       fluentd::plugin::file { $name:
         ensure  => $ensure,

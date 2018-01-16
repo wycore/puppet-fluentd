@@ -38,23 +38,16 @@
 # Copyright 2015 wywy, unless otherwise noted.
 #
 define fluentd::filter (
-  $ensure   = present,
-  $priority = 20,
-  $pattern  = '**',
-  $config   = {},
+  Enum['present', 'absent'] $ensure   = present,
+  Integer                   $priority = 20,
+  String                    $pattern  = '**',
+  Hash                      $config   = {},
 ) {
-
-  # parameter validation
-  if ! ($ensure in [ 'present', 'absent' ]) {
-    fail('ensure parameter must be present or absent')
-  }
-  validate_integer($priority)
-  validate_string($pattern)
-  validate_hash($config)
 
   fluentd::config::file { "filter-${title}":
     ensure   => $ensure,
     priority => $priority,
     content  => template( 'fluentd/filter.erb'),
   }
+
 }
