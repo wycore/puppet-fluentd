@@ -17,6 +17,6 @@ gem 'beaker-rspec', beakerrspec
 
 platforms :ruby_19 do
   gem 'public_suffix', '< 1.5.0', :platforms => :ruby_19
-  gem 'nokogiri', '< 1.7.0', :platforms => :ruby_19
+  gem 'nokogiri', '~> 1.8.1', :platforms => :ruby_19
   gem 'mime-types', '< 3.0', :platforms => :ruby_19
 end
