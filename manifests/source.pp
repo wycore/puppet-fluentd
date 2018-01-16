@@ -34,17 +34,15 @@
 # Copyright 2015 wywy, unless otherwise noted.
 #
 define fluentd::source (
-  $ensure   = present,
-  $priority = 10,
-  $config   = {},
+  String  $ensure   = present,
+  Integer $priority = 10,
+  Hash    $config   = {},
 ) {
 
   # parameter validation
   if ! ($ensure in [ 'present', 'absent' ]) {
     fail('ensure parameter must be present or absent')
   }
-  validate_integer($priority)
-  validate_hash($config)
 
   fluentd::config::file { "source-${title}":
     ensure   => $ensure,

@@ -43,23 +43,16 @@
 # Copyright 2015 wywy, unless otherwise noted.
 #
 define fluentd::match (
-  $ensure   = present,
-  $priority = 30,
-  $pattern  = '**',
-  $config   = {},
+  Enum['present', 'absent'] $ensure   = present,
+  Integer                   $priority = 30,
+  String                    $pattern  = '**',
+  Hash                      $config   = {},
 ) {
-
-  # parameter validation
-  if ! ($ensure in [ 'present', 'absent' ]) {
-    fail('ensure parameter must be present or absent')
-  }
-  validate_integer($priority)
-  validate_string($pattern)
-  validate_hash($config)
 
   fluentd::config::file { "match-${title}":
     ensure   => $ensure,
     priority => $priority,
     content  => template( 'fluentd/match.erb'),
   }
+
 }
