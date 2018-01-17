@@ -1,4 +1,12 @@
 # Changelog
+
+## 1.0.0 (unreleased)
+
+**Breaking changes:** This version drops puppet 3 support!
+
+* Fix hard coded user/group names in config manifest (#23)
+* migrate from stdlib validation to puppet datatypes (#24)
+
 ## 0.6.0
 * Updated README
 * fixed broken links, due to github organisation rename

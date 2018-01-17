@@ -1,17 +1,17 @@
 {
-  "name": "wywygmbh-fluentd",
-  "version": "0.6.0",
+  "name": "wycore-fluentd",
+  "version": "1.0.0",
   "author": "wywy",
   "summary": "Generic module for fluentd (td-agent).",
   "license": "Apache-2.0",
-  "source": "https://github.com/wywy/puppet-fluentd",
-  "project_page": "https://github.com/wywy/puppet-fluentd",
-  "issues_url": "https://github.com/wywy/puppet-fluentd/issues",
+  "source": "https://github.com/wycore/puppet-fluentd",
+  "project_page": "https://github.com/wycore/puppet-fluentd",
+  "issues_url": "https://github.com/wycore/puppet-fluentd/issues",
   "tags": ["fluentd", "td-agent"],
   "operatingsystem_support": [
     {
       "operatingsystem": "Ubuntu",
-      "operatingsystemrelease": [ "14.04", "12.04" ]
+      "operatingsystemrelease": [ "16.04", "14.04" ]
     },
     {
       "operatingsystem": "Debian",
@@ -24,7 +24,7 @@
   ],
   "dependencies": [
     { "name": "puppetlabs/stdlib", "version_requirement": ">= 4.6.0 < 5.0.0" },
-    { "name": "puppetlabs/apt", "version_requirement": ">= 2.0.0 < 3.0.0" }
+    { "name": "puppetlabs/apt", "version_requirement": ">= 4.0.0" }
   ],
   "data_provider": null
 }

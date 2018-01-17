@@ -263,14 +263,14 @@ This module gives you the possibility to install plugins as gem or files.
 ### Requirements
 
 Modules:
-* puppetlabs/apt >= 1.8.0 < 3.0.0
+* puppetlabs/apt >= 4.0.0
 
 ## Limitations
-This module has been built on and tested against Puppet 3.7.5 and higher.
+This module has been built on and tested against Puppet 4.6 and higher.
 
 The module has been tested on:
 
-* Ubuntu 12.04
+* Ubuntu 16.04
 
 Testing on other platforms has been light and cannot be guaranteed.
 
@@ -285,8 +285,8 @@ To run the tests install the ruby dependencies with `bundler` and execute
 bundle install --path vendor/bundle
 bundle exec rake spec
 bundle exec rake lint
-bundle exec rake beaker BEAKER_set=ubuntu-server-1204-x64
 bundle exec rake beaker BEAKER_set=ubuntu-server-1404-x64
+bundle exec rake beaker BEAKER_set=ubuntu-server-1604-x64
 bundle exec rake beaker BEAKER_set=debian-60-x64
 bundle exec rake beaker BEAKER_set=debian-78-x64
 bundle exec rake beaker BEAKER_set=debian-82-x64
