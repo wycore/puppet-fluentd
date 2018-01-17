@@ -13,7 +13,7 @@ describe 'fluentd::filter' do
         let(:title) { 'test' }
         let(:params) do
           {
-            priority: '20',
+            priority: 20,
             pattern: '*.test',
             config: {
               'type'   => 'record_transformer',

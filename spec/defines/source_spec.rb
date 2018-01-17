@@ -13,7 +13,7 @@ describe 'fluentd::source' do
         let(:title) { 'test' }
         let(:params) do
           {
-              priority: '10',
+              priority: 10,
               config: {
                 'type'   => 'tail',
                 'format' => 'json',

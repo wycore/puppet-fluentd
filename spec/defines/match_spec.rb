@@ -13,7 +13,7 @@ describe 'fluentd::match' do
         let(:title) { 'test' }
         let(:params) do
           {
-              priority: '30',
+              priority: 30,
               pattern: '*.test',
               config: {
                   'flush_interval' => '30s',
@@ -41,7 +41,7 @@ describe 'fluentd::match' do
         let(:title) { 'test' }
         let(:params) do
           {
-              priority: '30',
+              priority: 30,
               pattern: '*.test',
               config: {
                   'type'  => 'copy',
