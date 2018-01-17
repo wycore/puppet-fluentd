@@ -1,6 +1,6 @@
 # Changelog
 
-## 1.0.0 (unreleased)
+## 1.0.0
 
 **Breaking changes:** This version drops puppet 3 support!
 
